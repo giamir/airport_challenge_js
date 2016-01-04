@@ -19,6 +19,11 @@ describe('Airport', function() {
       airport.land(plane);
       expect(airport.planes).toContain(plane);
     });
+    it('does not allow the plane to land when weather is stormy', function() {
+      spyOn(airport.weather, 'isStormy').and.returnValue(true);
+      var msg = 'Unable to take off due to stormy weather';
+      expect( function(){ airport.land(plane); } ).toThrowError(msg);
+    });
   });
 
   describe('#take_off', function() {

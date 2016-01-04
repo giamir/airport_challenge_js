@@ -4,6 +4,8 @@ function Airport() {
 }
 
 Airport.prototype.land = function(plane) {
+  var msg = 'Unable to take off due to stormy weather';
+  if(this.weather.isStormy()) throw new TypeError(msg);
   plane.land();
   this.planes.push(plane);
 };
