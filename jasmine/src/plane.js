@@ -3,6 +3,7 @@ function Plane() {
 }
 
 Plane.prototype.land = function() {
+  if (this.isFlying === false) throw new TypeError('Unable to land cause is not flying');
   this.isFlying = false;
 };
 
