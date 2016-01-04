@@ -23,5 +23,10 @@ describe('Plane', function() {
       plane.take_off();
       expect(plane.isFlying).toBe(true);
     });
+    it('can not take off when is already flying', function() {
+      plane.take_off();
+      var msg = 'Unable to take off cause is already flying';
+      expect( function(){ plane.take_off(); } ).toThrowError(msg);
+    });
   });
 });

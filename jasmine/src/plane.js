@@ -8,5 +8,6 @@ Plane.prototype.land = function() {
 };
 
 Plane.prototype.take_off = function() {
+  if (this.isFlying) throw new TypeError('Unable to take off cause is already flying');
   this.isFlying = true;
 };
