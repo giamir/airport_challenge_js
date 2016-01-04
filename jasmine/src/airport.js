@@ -16,12 +16,14 @@ Airport.prototype.land = function(plane) {
 Airport.prototype.take_off = function(plane) {
   if(this.weather.isStormy()) throw new TypeError('Unable to take off due to stormy weather');
   plane.take_off();
-  var i = this.planes.indexOf(plane);
-  if(i != -1) {
-  	this.planes.splice(i, 1);
-  }
+  if(this._planePosition(plane) === -1) throw new TypeError('Unable to instruct plane to take off cause is not in the airport');
+  this.planes.splice(this._planePosition(plane), 1);
 };
 
 Airport.prototype._isFull = function() {
   return this.planes.length >= this.capacity;
+};
+
+Airport.prototype._planePosition = function(plane) {
+  return this.planes.indexOf(plane);
 };

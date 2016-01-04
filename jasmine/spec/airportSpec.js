@@ -61,5 +61,10 @@ describe('Airport', function() {
       var msg = 'Unable to take off due to stormy weather';
       expect( function(){ airport.take_off(plane); } ).toThrowError(msg);
     });
+    it('can not instructs a plane to take off if it is not in the airport', function() {
+      var msg = 'Unable to instruct plane to take off cause is not in the airport';
+      airport.take_off(plane);
+      expect( function(){ airport.take_off(plane); } ).toThrowError(msg);
+    });
   });
 });
