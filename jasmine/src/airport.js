@@ -1,6 +1,9 @@
-function Airport() {
+var DEFAULT_CAPACITY = 10;
+
+function Airport(capacity) {
   this.planes = [];
   this.weather = new Weather();
+  this.capacity = typeof capacity !== 'undefined' ? capacity : DEFAULT_CAPACITY;
 }
 
 Airport.prototype.land = function(plane) {

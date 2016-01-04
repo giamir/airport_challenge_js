@@ -10,6 +10,17 @@ describe('Airport', function() {
     airport.weather = { isStormy: function() {} };
   });
 
+  describe('#initialize', function() {
+    it('creates an airport with default capacity if not specified', function() {
+      expect(airport.capacity).toEqual(DEFAULT_CAPACITY);
+    });
+    it('creates an airport with a specified capacity', function() {
+      var airport2 = new Airport(50);
+      expect(airport2.capacity).toEqual(50);
+    });
+  });
+
+
   describe('#land', function() {
     it('instructs the plane to land', function() {
       airport.land(plane);
