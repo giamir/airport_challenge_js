@@ -6,9 +6,10 @@ describe('Plane', function() {
     plane = new Plane();
   });
 
-  // describe('', function() {
-  //   it('', function() {
-  //     expect(fizzBuzz.play(3)).toEqual('Fizz');
-  //   });
-  // });
+  describe('#land', function() {
+    it('set flying status to false', function() {
+      plane.land();
+      expect(plane.isFlying).toBe(false);
+    });
+  });
 });
