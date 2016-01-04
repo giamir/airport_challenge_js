@@ -7,18 +7,21 @@ function Airport(capacity) {
 }
 
 Airport.prototype.land = function(plane) {
-  var msg = 'Unable to take off due to stormy weather';
-  if(this.weather.isStormy()) throw new TypeError(msg);
+  if(this.weather.isStormy()) throw new TypeError('Unable to take off due to stormy weather');
+  if(this._isFull()) throw new TypeError('Unable to land cause airport is full');
   plane.land();
   this.planes.push(plane);
 };
 
 Airport.prototype.take_off = function(plane) {
-  var msg = 'Unable to take off due to stormy weather';
-  if(this.weather.isStormy()) throw new TypeError(msg);
+  if(this.weather.isStormy()) throw new TypeError('Unable to take off due to stormy weather');
   plane.take_off();
   var i = this.planes.indexOf(plane);
   if(i != -1) {
   	this.planes.splice(i, 1);
   }
+};
+
+Airport.prototype._isFull = function() {
+  return this.planes.length >= this.capacity;
 };

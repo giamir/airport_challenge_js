@@ -35,6 +35,13 @@ describe('Airport', function() {
       var msg = 'Unable to take off due to stormy weather';
       expect( function(){ airport.land(plane); } ).toThrowError(msg);
     });
+    it('does not allow the plane to land when airport is full', function() {
+      for (var i = 0; i < airport.capacity; i++) {
+        airport.land(plane);
+      }
+      var msg = 'Unable to land cause airport is full';
+      expect( function(){ airport.land(plane); } ).toThrowError(msg);
+    });
   });
 
   describe('#take_off', function() {
